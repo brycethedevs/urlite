@@ -7,7 +7,6 @@ const adapter = new fs("db.json");
 const db = lowdb(adapter);
 const body = require("body-parser").json();
 const helmat = require("helmet")
-app.use(helmet());
 app.use(helmet.contentSecurityPolicy());
 app.use(helmet.crossOriginEmbedderPolicy());
 app.use(helmet.crossOriginOpenerPolicy());
