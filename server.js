@@ -123,7 +123,7 @@ app.get("*", (req, res) => {
 });
 
 
-const listener = app.listen(8080, () => {
+const listener = app.listen(80, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
 
