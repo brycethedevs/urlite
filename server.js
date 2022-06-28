@@ -1,11 +1,15 @@
-// Import packages
-const express = require("express");
 const app = express();
 const lowdb = require("lowdb");
 const fs = require("lowdb/adapters/FileSync");
 const adapter = new fs("db.json");
 const db = lowdb(adapter);
 const body = require("body-parser").json();
+const express = require("express");
+const helmet = require("helmet");
+
+const app = express();
+
+app.use(helmet());
 const helmat = require("helmet")
 app.use(helmet.contentSecurityPolicy());
 app.use(helmet.crossOriginEmbedderPolicy());
