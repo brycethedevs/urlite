@@ -1,12 +1,37 @@
-/* Set sizing and vertical centering. */
-
 body,
 html {
   height: 100%;
   width: 100%;
   min-height: 100%;
+  background-color: black;
 }
+input {
+  background: none;
+  font-family: inherit;
+  padding: 0px 17px;
+  height: 48px;
+  border: 1px solid #FFFFFF;
+  color: var(--text-color);
+  outline: none;
+  color:#FFF;
+  width: 350px;
+  margin-top: 5px;
+  border-radius: 50px;
+  
+ display: flex;
+  justify-content: center;
+  margin-right:auto;
+  margin-left:auto;
 
+}
+label {
+  text-align: center;
+  color: white;
+}
+h4{text-align: center;
+  color: white; }
+  h1{text-align: center;
+    color: white; }
 html,
 body {
   padding: 0 !important;
@@ -24,13 +49,36 @@ center {
   display: table-cell;
   vertical-align: middle;
 }
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
 
+.logo {
+  width: 150px;
+}
+
+.logo-wrapper .text {
+  font-size: 75px;
+  color: #FFF;
+}
+
+.logo-wrapper h1 {
+  color: white;
+}
 /* Fix color of title. */
 
 .title {
   color: #000000 !important;
 }
-
+p{
+  color: rgba(189, 195, 199,1.0);
+  font-weight: bold;
+text-align: center;
+}
 @media (prefers-color-scheme: dark) {
   .title {
     color: #FFFFFF !important;
