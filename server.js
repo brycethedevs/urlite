@@ -5,7 +5,7 @@ const adapter = new fs("db.json");
 const db = lowdb(adapter);
 const body = require("body-parser").json();
 const express = require("express");
-const app = express();
+
 
 
 app.use(express.static("public"));
