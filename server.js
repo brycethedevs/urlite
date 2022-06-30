@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 
 
 
-app.post("/api/create", body, (req, res) => {
+app.post("/create", body, (req, res) => {
 
   var url = req.body.url;
   var slug = req.body.slug;
@@ -84,7 +84,7 @@ app.post("/api/create", body, (req, res) => {
 
     return res
       .status(200)
-      .json({ success: true, slug: slug, url: url, token: token });
+      .json({ success: true, slug: slug, url: url });
 
 
   } else {

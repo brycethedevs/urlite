@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
- <link rel="icon" type="image/png" href="./googlie.webp"/>
+ <link rel="icon" type="image/png" href="./googlie.png"/>
  <meta name="title" content="Googlie ">
  <meta name="google-site-verification" content="Wh0uNo-wjyFbo_t4nw5QUWuL9BFFp977q5yeqSf2vs4" />
 <meta name="description" content="URL shortener that fast and very simple just one click of a button and you will have your URL forever. What are you waiting for come shorten your URL now!     ">
@@ -13,40 +13,35 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="language" content="English">
     <title>Googlie | URL Shortener</title>
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <center>
-      <img class="logo" src="./googlie.webp">
-      <a class="title" href="./" style="text-decoration: none;">
-        <h1>Googlie</h1>
-        <div></div>
-        <label for="url">The Best Url Shortener</label>
-        <p></p>
-      </a>
-      <br />
-    <form>
-        <div>
-          <input type="url" name="url" placeholder="Enter the url to shorten" required />
-          <input
-            type="text"
-            name="slug"
-            placeholder="Enter a slug (optional)"
-            style="margin-top: 10px;"
-          />
-        </div>
-        <br />
-        <input  type="submit" value="shorten!" />
-      </form>
-       <div id="response"></div>
-       <footer>
-        <p class="footer">Copyright © Googlie</p>
-        <a href="https://github.com/brycethedeveloper">Coded by brycethedeveloper</a>
+        <div id="app">
+    <section class="py-5">
+      <div class="container">
+ <div class="mb-3">
+        <form method="POST" action="/">
+          <div  class="logo-wrapper">
+        <img class="logo" src="./googlie.webp"
+            alt="website" />
+            <h1>Googlie</h1>
+            <div></div>
+            <form>
+            <label for="url">The Best Url Shortener</label>
+            <p></p>
+   <input type="url" name="url" id="url" placeholder="Enter the url to shorten" required>
+   <input type="text" name="slug" placeholder="Enter a slug (optional)" syle="margin-top: 10px;" />
+   <input type="submit" value="CREATE URL" />
+   </form>
+         <div id="response">
+</div>
+<footer>
+          <p class="footer">Copyright © Googlie</p>
+          <a href="https://github.com/brycethedeveloper">Coded by brycethedeveloper</a>
 </footer>
-      <br />
-     
-      <br />
-    </center>
+</div>
+      </div>
+    </section>
   </body>
   <script src="./index.js"></script>
 </html>

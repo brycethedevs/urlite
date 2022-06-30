@@ -6,7 +6,7 @@ form.addEventListener("submit", event => {
   const url = form.elements.url.value;
   const slug = form.elements.slug.value;
   const body = { url: url, slug: slug };
-  fetch("/api/create", {
+  fetch("/create", {
     method: "POST",
     body: JSON.stringify(body),
     headers: { "Content-Type": "application/json" }
@@ -23,9 +23,3 @@ form.addEventListener("submit", event => {
     });
 });
 
-function copytoken() {
-  document.getElementById("token").select();
-  document.execCommand("copy");
-  const notyf = new Notyf();
-  notyf.success("Delete Token Copied to Clipboard");
-}
