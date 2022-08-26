@@ -22,30 +22,7 @@ app.use(helmet.originAgentCluster());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
-const http = require('http');
-const https = require('https');
-const fs = require('fs');
-const httpPort = 3000;
-const httpsPort = 3001;
 
-var key = fs.readFileSync(__dirname + '/certsFiles/selfsigned.key');
-var cert = fs.readFileSync(__dirname + '/certsFiles/selfsigned.crt');
-
-var credentials = {
-  key: key,
-  cert: cert
-};
-var httpServer = http.createServer(app);
-var httpsServer = https.createServer(credentials, app);
-
-
-httpServer.listen(httpPort, () => {
-  console.log("Http server listing on port : " + httpPort)
-});
-
-httpsServer.listen(httpsPort, () => {
-  console.log("Https server listing on port : " + httpsPort)
-});
 app.use(express.static("public"));
 
 app.set("json spaces", 2);
@@ -219,7 +196,9 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-
+const listener = app.listen(80, () => {
+  console.log("Your app is listening on port " + listener.address().port);
+});
 function checkurl(string) {
   var url = "";
   try {
