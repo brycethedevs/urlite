@@ -1,4 +1,3 @@
-
 const lowdb = require("lowdb");
 const fs = require("lowdb/adapters/FileSync");
 const adapter = new fs("db.json");
@@ -23,7 +22,19 @@ app.use(helmet.originAgentCluster());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
-
+const https = require("https");
+const express = require("express");
+https
+  .createServer(
+    {
+      key: fs.readFileSync("key.pem"),
+      cert: fs.readFileSync("cert.pem"),
+    },
+    app
+  )
+  .listen(80, () => {
+    console.log("serever is runing at port 80");
+  });
 
 app.use(express.static("public"));
 
@@ -198,10 +209,6 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-
-const listener = app.listen(80, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
 
 function checkurl(string) {
   var url = "";
