@@ -31,15 +31,6 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/stats", (req, res) => {
-  res.sendFile(__dirname + "/views/stats.html");
-});
-
-
-app.get("/delete", (req, res) => {
-  res.sendFile(__dirname + "/views/delete.html");
-});
-
 
 app.post("/create", body, (req, res) => {
   var url = req.body.url;
@@ -85,13 +76,13 @@ app.post("/create", body, (req, res) => {
 
 
     db.get("urls")
-      .push({ slug: slug, url: url, token: token, stats: 0 })
+      .push({ slug: slug, url: url})
       .write();
     
 
     return res
       .status(200)
-      .json({ success: true, slug: slug, url: url, token: token });
+      .json({ success: true, slug: slug, url: url});
 
   } else {
 
@@ -108,70 +99,17 @@ app.post("/create", body, (req, res) => {
 
 
     db.get("urls")
-      .push({ slug: slug, url: url, token: token, stats: 0 })
+      .push({ slug: slug, url: url })
       .write();
 
     return res
       .status(200)
-      .json({ success: true, slug: slug, url: url, token: token });
+      .json({ success: true, slug: slug, url: url });
   }
 });
 
-app.post("/stats", body, (req, res) => {
-  var slug = req.body.slug;
-
-  if (!slug)
-    return res.status(400).json({ success: false, error: "Slug is missing." });
 
 
-  const result = db
-    .get("urls")
-    .find({ slug: slug })
-    .value();
-
-
-  if (!result)
-    return res.status(400).json({ success: false, error: "Invalid slug." });
-
-  return res.status(200).json({
-    success: true,
-    slug: result.slug,
-    url: result.url,
-    stats: result.stats
-  });
-});
-
-
-app.post("/delete", body, (req, res) => {
-  var token = req.body.token;
-  var slug = req.body.slug;
-
-
-  if (!slug || !token)
-    return res
-      .status(400)
-      .json({ success: false, error: "Slug or token is missing." });
-
-
-  const result = db
-    .get("urls")
-    .find({ slug: slug, token: token })
-    .value();
-
-
-  if (!result)
-    return res
-      .status(400)
-      .json({ success: false, error: "Invalid slug or token." });
-
-
-  db.get("urls")
-    .remove({ slug: slug, token: token })
-    .write();
-
-
-  return res.status(200).json({ success: true });
-});
 
 
 app.get("*", (req, res) => {
