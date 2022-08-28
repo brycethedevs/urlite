@@ -17,6 +17,7 @@ form.addEventListener("submit", event => {
         response.innerHTML = `<p><b>Created URL Is: </b><a href="https://${window.location.hostname}/${json.slug}">https://${window.location.hostname}/${json.slug}</a></p>
         <p><b>Your delete token is:</b></p>
         <input class="copy" readonly="readonly" value="${json.token}" id="token" onclick="copytoken()" />
+          <a href="./delete">Delete a slug</a>
         `;
       } else {
         response.innerHTML = `<p><b>Error: </b>${json.error}</p>`;
