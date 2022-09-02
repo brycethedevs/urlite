@@ -14,7 +14,7 @@ form.addEventListener("submit", event => {
     .then(response => response.json())
     .then(json => {
       if (json.success === true) {
-        response.innerHTML = `<p><b>Created URL Is: </b><a href="https://${window.location.hostname}/${json.slug}">https://${window.location.hostname}/${json.slug}</a></p>
+        response.innerHTML = `<p><b>Created URL Is: </b><a style="color: white; "href="https://${window.location.hostname}/${json.slug}">https://${window.location.hostname}/${json.slug}</a></p>
         `;
       } else {
         response.innerHTML = `<p><b>Error: </b>${json.error}</p>`;
