@@ -44,11 +44,6 @@ app.post("/create", body, (req, res) => {
       .status(400)
       .json({ success: false, error: "The URL provided is invalid" });
 
-  if (url.includes("https://pornhub.com"))
-    return res.status(400).json({
-      success: false,
-      error: "The Long Url you enter is blacklisted"
-    });
 
 
   const token = random(30);
