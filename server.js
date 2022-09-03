@@ -30,7 +30,6 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
 
-
 app.post("/create", body, (req, res) => {
   var url = req.body.url;
   var slug = req.body.slug;
