@@ -44,7 +44,7 @@ app.post("/create", body, (req, res) => {
       .status(400)
       .json({ success: false, error: "The URL provided is invalid" });
 
-  if (url.includes(req.get("host")))
+  if (url.includes("https://pornhub.com")))
     return res.status(400).json({
       success: false,
       error: "Long URL cannot point to the domain."
