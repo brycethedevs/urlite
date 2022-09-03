@@ -48,7 +48,7 @@ app.post("/create", body, (req, res) => {
   if (url.includes(req.get("host")))
     return res.status(400).json({
       success: false,
-      error: "Long URLs cannot point to the URL shortener domain."
+      error: "Long URL cannot point to the domain."
     });
 
 
@@ -108,10 +108,6 @@ app.post("/create", body, (req, res) => {
   }
 });
 
-
-
-
-
 app.get("*", (req, res) => {
 
   const slug = req.path.slice(1);
@@ -156,7 +152,6 @@ function random(length) {
   }
   return result;
 }
-
 
 db.defaults({
   urls: []
