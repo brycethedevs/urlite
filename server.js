@@ -47,7 +47,7 @@ app.post("/create", body, (req, res) => {
   if (url.includes("https://pornhub.com"))
     return res.status(400).json({
       success: false,
-      error: "Long URL cannot point to the domain."
+      error: "The Long Url you enter is blacklisted"
     });
 
 
