@@ -31,8 +31,8 @@ app.get("/", (req, res) => {
 });
 
 app.post("/create", body, (req, res) => {
-  var url = req.body.url;
-  var slug = req.body.slug;
+  let url = req.body.url;
+  let slug = req.body.slug;
   if (!url)
     return res
       .status(400)
@@ -57,12 +57,12 @@ app.post("/create", body, (req, res) => {
     if (
       db
         .get("urls")
-        .find({ slug: slug })
+        .find({ slug: slug 
         .value()
     )
       return res.status(400).json({
         success: false,
-        error: "The requested slug is already in use."
+        error: "The requeste})d slug is already in use."
       });
 
 
@@ -77,7 +77,7 @@ app.post("/create", body, (req, res) => {
 
   } else {
 
-    var slug = random(5);
+    let slug = random(5);
 
     while (
       db
@@ -125,7 +125,7 @@ const listener = app.listen(80, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
 function checkurl(string) {
-  var url = "";
+  let url = "";
   try {
     url = new URL(string);
   } catch (_) {
@@ -136,9 +136,9 @@ function checkurl(string) {
 
 
 function random(length) {
-  var result = "";
+  let result = "";
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
   }
   return result;
