@@ -88,7 +88,6 @@ button {
   color: white;
   padding: 20px 30px;
   box-shadow: 0px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  border: none;
   margin-left:1vw;
   height: 1em;
   border-radius: 10rem;
@@ -101,7 +100,6 @@ button {
   color: white;
   padding: 20px 30px;
   box-shadow: 0px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  border: none;
   border-radius: 10rem;
   width: 12vw;
   display: block;
