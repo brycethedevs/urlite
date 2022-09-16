@@ -45,9 +45,6 @@ app.post("/create", body, (req, res) => {
 
   
  
-
-  const token = random(30);
-
   if (slug) {
 
     if (!slug.match(/^[A-Za-z0-9_-]+$/))
