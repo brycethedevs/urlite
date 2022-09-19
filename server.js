@@ -57,7 +57,7 @@ app.post("/create", body, (req, res) => {
     if (
       db
         .get("urls")
-        .find({ slug: slug 
+        .find({ slug: slug })
         .value()
     )
       return res.status(400).json({
