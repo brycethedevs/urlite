@@ -137,6 +137,7 @@ function checkurl(string) {
 
 function random(length) {
   let result = "";
+  const val = Math.random();
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * characters.length));
