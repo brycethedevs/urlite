@@ -114,7 +114,7 @@ app.get("*", (req, res) => {
 
   db.get("urls")
     .find({ slug: slug })
-    .assign({ stats: result.stats + 1 })
+    .assign({})
     .write();
 
 
