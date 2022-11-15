@@ -5,6 +5,7 @@ const db = lowdb(adapter);
 const body = require("body-parser").json();
 const express = require("express");
 const app = express();
+const https = require('https')
 const helmet = require("helmet")
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy());
@@ -23,6 +24,14 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 app.use(express.static("public"));
+
+const sslServer = https.createServer(
+  {
+    key: fs.readFileSync(path.join(__dirname, 'cert', 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert', 'cert.pem')),
+  },
+  app
+)
 
 app.set("json spaces", 2);
 
@@ -120,10 +129,7 @@ app.get("*", (req, res) => {
 
   return res.redirect(result.url);
 });
-
-const listener = app.listen(80, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+sslServer.listen(3443, () => console.log('Secure server 🚀🔑 on port 3443'))
 function checkurl(string) {
   let url = "";
   try {
