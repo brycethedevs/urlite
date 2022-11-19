@@ -7,7 +7,6 @@ const express = require("express");
 const app = express();
 const realFs = require('node:fs');
 const https = require('https')
-const val = Math.random();
 const helmet = require("helmet")
 const server = https.createServer(options, app);
 
@@ -152,12 +151,12 @@ function checkurl(string) {
   return url.protocol === "http:" || url.protocol === "https:";
 }
 
-
+//* Math.random()
 function random(length) {
   let result = "";
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+    result += characters.charAt(Math.floor(crypto.getRandomValues(). * characters.length));
   }
   return result;
 }
