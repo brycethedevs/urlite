@@ -8,7 +8,7 @@ const app = express();
 const realFs = require('node:fs');
 const https = require('https')
 const helmet = require("helmet")
-var server = https.createServer(options, app);
+const server = https.createServer(options, app);
 
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy());
@@ -35,9 +35,9 @@ const realtimeUser = io.metric({
 })
 const port = 3000;
 
-var key = realFs.readFileSync(__dirname + '/privatekey.pem');
-var cert = realFs.readFileSync(__dirname + '/cert.pem');
-var options = {
+const key = realFs.readFileSync(__dirname + '/privatekey.pem');
+const cert = realFs.readFileSync(__dirname + '/cert.pem');
+const options = {
   key: key,
   cert: cert
 };
