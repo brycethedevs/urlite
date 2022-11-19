@@ -1,9 +1,14 @@
 {
   "name": "googlie",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
+    "@pm2/io": "^5.0.0",
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "helmet": "^5.1.0",
+    "https": "^1.0.0",
     "lowdb": "^1.0.0"
   },
   "engines": {

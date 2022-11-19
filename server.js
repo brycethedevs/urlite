@@ -5,8 +5,11 @@ const db = lowdb(adapter);
 const body = require("body-parser").json();
 const express = require("express");
 const app = express();
+const realFs = require('node:fs');
 const https = require('https')
 const helmet = require("helmet")
+var server = https.createServer(options, app);
+
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy());
 app.use(helmet.crossOriginEmbedderPolicy());
@@ -25,6 +28,19 @@ app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 app.use(express.static("public"));
 
+const io = require('@pm2/io')
+
+const realtimeUser = io.metric({
+  name: 'Realtime user',
+})
+const port = 3000;
+
+var key = realFs.readFileSync(__dirname + '/privatekey.pem');
+var cert = realFs.readFileSync(__dirname + '/cert.pem');
+var options = {
+  key: key,
+  cert: cert
+};
 
 app.set("json spaces", 2);
 
@@ -122,9 +138,9 @@ app.get("*", (req, res) => {
 
   return res.redirect(result.url);
 });
-const listener = app.listen(80, () => {
-  console.log("Your app is listening on port " + listener.address().port);
-});
+
+server.listen(3000);
+
 function checkurl(string) {
   let url = "";
   try {
