@@ -33,7 +33,6 @@ const io = require('@pm2/io')
 const realtimeUser = io.metric({
   name: 'Realtime user',
 })
-const port = 3000;
 
 const key = realFs.readFileSync(__dirname + '/privatekey.pem');
 const cert = realFs.readFileSync(__dirname + '/cert.pem');
