@@ -155,7 +155,7 @@ function random(length) {
   let result = "";
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(crypto.getRandomValues(). * characters.length));
+    result += characters.charAt(Math.floor(crypto.getRandomValues() * characters.length));
   }
   return result;
 }
