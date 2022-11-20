@@ -138,7 +138,7 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-server.listen(3000);
+server.listen(80);
 
 function checkurl(string) {
   let url = "";
