@@ -8,7 +8,26 @@ const app = express();
 const realFs = require('node:fs');
 const https = require('https')
 const helmet = require("helmet")
-const server = https.createServer(options, app);
+var http = require('http');
+
+
+var httpsOptions = {
+    key: realFs.readFileSync('localhost-key.pem'),
+    cert: realFs.readFileSync('localhost.pem')
+};
+
+
+http.createServer(app).listen(8888);
+https.createServer(httpsOptions, app).listen(4433);
+
+const auth = require('http-auth');
+const basic = auth.basic({realm: 'Monitor Area'}, function(user, pass, callback) {
+  callback(user === 'username' && pass === 'password');
+});
+
+const statusMonitor = require('express-status-monitor')({ path: '/admin' });
+app.use(statusMonitor.middleware); 
+app.get('/status', basic.check(statusMonitor.pageRoute)); 
 
 app.use(helmet());
 app.use(helmet.contentSecurityPolicy());
@@ -33,13 +52,6 @@ const io = require('@pm2/io')
 const realtimeUser = io.metric({
   name: 'Realtime user',
 })
-
-const key = realFs.readFileSync(__dirname + '/privatekey.pem');
-const cert = realFs.readFileSync(__dirname + '/cert.pem');
-const options = {
-  key: key,
-  cert: cert
-};
 
 app.set("json spaces", 2);
 
@@ -138,7 +150,7 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-server.listen(80);
+
 
 function checkurl(string) {
   let url = "";
