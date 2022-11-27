@@ -6,7 +6,6 @@ const body = require("body-parser").json();
 const express = require("express");
 const app = express();
 const helmet = require("helmet")
-
 const auth = require('http-auth');
 const basic = auth.basic({realm: 'Monitor Area'}, function(user, pass, callback) {
   callback(user === 'brycecarpenter' && pass === 'bRYCE2007@@>');
@@ -33,12 +32,6 @@ app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy());
 app.use(helmet.xssFilter());
 app.use(express.static("public"));
-
-const io = require('@pm2/io')
-
-const realtimeUser = io.metric({
-  name: 'Realtime user',
-})
 
 app.set("json spaces", 2);
 
@@ -154,7 +147,7 @@ function random(length) {
   let result = "";
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(crypto.getRandomValues() * characters.length));
+    result += characters.charAt(Math.floor(math.getRandomValues() * characters.length));
   }
   return result;
 }
