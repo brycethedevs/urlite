@@ -5,24 +5,11 @@ const db = lowdb(adapter);
 const body = require("body-parser").json();
 const express = require("express");
 const app = express();
-const realFs = require('node:fs');
-const https = require('https')
 const helmet = require("helmet")
-var http = require('http');
-
-
-var httpsOptions = {
-    key: realFs.readFileSync('localhost-key.pem'),
-    cert: realFs.readFileSync('localhost.pem')
-};
-
-
-http.createServer(app).listen(8888);
-https.createServer(httpsOptions, app).listen(4433);
 
 const auth = require('http-auth');
 const basic = auth.basic({realm: 'Monitor Area'}, function(user, pass, callback) {
-  callback(user === 'username' && pass === 'password');
+  callback(user === 'brycecarpenter' && pass === 'bRYCE2007@@>');
 });
 
 const statusMonitor = require('express-status-monitor')({ path: '/admin' });
@@ -150,7 +137,7 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-
+app.listen(80)
 
 function checkurl(string) {
   let url = "";
@@ -162,7 +149,7 @@ function checkurl(string) {
   return url.protocol === "http:" || url.protocol === "https:";
 }
 
-//* Math.random()
+
 function random(length) {
   let result = "";
   const characters = "abcdefghijkmnopqrstuvwxyz0123456789";
