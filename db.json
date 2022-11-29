@@ -1,3 +1,8 @@
 {
-  "urls": []
+  "urls": [
+    {
+      "slug": "wfmir",
+      "url": "https://google.com"
+    }
+  ]
 }
