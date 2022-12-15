@@ -270,3 +270,4 @@ function random(length) {
 db.defaults({
   urls: []
 }).write();
+module.exports = app;
