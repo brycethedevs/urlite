@@ -5,7 +5,15 @@ const db = lowdb(adapter);
 const body = require("body-parser").json();
 const express = require("express");
 const app = express();
+const RealFs = require("node:fs")
+const https = require("https")
 
+const options = {
+  key: RealFs.readFileSync('key.pem'),
+  cert: RealFs.readFileSync('cert.pem')
+};
+
+https.createServer(options, app).listen(8000);
 
 app.use(express.static("public"));
 
@@ -244,7 +252,7 @@ app.get("*", (req, res) => {
   return res.redirect(result.url);
 });
 
-app.listen(31802)
+
 
 
 function checkurl(string) {
