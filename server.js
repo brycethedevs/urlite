@@ -3,8 +3,9 @@ const fs = require("lowdb/adapters/FileSync");
 const adapter = new fs("db.json");
 const db = lowdb(adapter);
 const body = require("body-parser").json();
-let express = require('express');
-let app = express();
+let express = require("express");
+let app = express(); 
+
 
 app.use(express.static("public"));
 
